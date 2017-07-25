@@ -1,0 +1,11 @@
+<FIELD
+  DOMAIN="SVR_UNBOUNDED_STRING"
+  LABEL="Field.Label.ObejctiveTypeID"
+>
+  <CONNECT>
+	<SOURCE EXTENDED_PATH="/DecisionDetails/BasicCase/displayObjectiveTimelines/Item[]/objectiveTypeID" <!-- XML tag path to the specific data this field is requesting --> 
+	  NAME="DISPLAY"
+	  PROPERTY="xmlData"  <!-- javabean contanting all the parsed XML blob data --> 
+	/>
+  </CONNECT>
+</FIELD>

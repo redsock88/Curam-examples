@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PAGE PAGE_ID="Person_search">
+	<PAGE_TITLE>
+		<CONNECT>
+			<SOURCE NAME="TEXT" PROPERTY="PageTitle.StaticText1"/>
+		</CONNECT>
+	</PAGE_TITLE>
+	
+	<SERVER_INTERFACE NAME="ACTION" CLASS="Person_fo" OPERATION="search" PHASE="ACTION" /> <!-- Call out to java code -->
+	
+	<CLUSTER NUM_COLS="2" TITLE="Cluster.Title.SearchCriteria">
+		<FIELD LABEL="Field.Label.ReferenceNumber">
+			<CONNECT>
+				<TARGET NAME="ACTION" PROPERTY="referenceNumber"/> <!-- PROPERTY is the name of the varaible inside the javabean object -->
+			</CONNECT>
+		</FIELD>
+		<FIELD CONTROL="SKIP"/>
+	</CLUSTER>
+	<CLUSTER NUM_COLS="2" TITLE="Cluster.Title.AdditionalSearchCriteria">
+		<FIELD LABEL="Field.Label.FirstName">
+			<CONNECT>
+				<TARGET NAME="ACTION" PROPERTY="forename"/> 
+			</CONNECT>
+		</FIELD>
+		<ACTION_SET ALIGNMENT="CENTER" TOP="false">
+			<ACTION_CONTROL LABEL="ActionControl.Label.Search" IMAGE="SearchButton" TYPE="SUBMIT">
+				<LINK PAGE_ID="THIS"/>
+			</ACTION_CONTROL>
+			<ACTION_CONTROL LABEL="ActionControl.Label.Reset" IMAGE="ResetButton">
+				<LINK PAGE_ID="Person_search"/>
+			</ACTION_CONTROL>
+		</ACTION_SET>
+	</CLUSTER>
+	<LIST TITLE="List.Title.SearchResults">
+		<FIELD LABEL="Field.Title.Name" WIDTH="44">
+			<CONNECT>
+				<SOURCE NAME="ACTION" PROPERTY="personName"/>
+			</CONNECT>
+		</FIELD>
+	</LIST>
+</PAGE>

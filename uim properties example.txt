@@ -1,0 +1,14 @@
+Page.Title=Person Home Page
+
+Cluster.Title.Details=Details
+Cluster.Title.ContactDetails=Contact Details
+
+Field.Value.Welcome=Field Value
+Field.Label.Welcome=Field Label
+Field.Label.FirstName=First Name
+Field.Label.LastName=Last Name
+Field.Label.Title=Title
+Field.Label.Gender=Gender
+Field.Label.Email=Email
+Field.Label.PhoneNumber=Phone Number
+Field.Label.Address=Address

@@ -1,0 +1,29 @@
+<PAGE PAGE_ID="Activity_resolveApplicationHome">
+	<JSP_SCRIPTLET>
+		<![CDATA[
+			curam.omega3.request.RequestHandler rh = curam.omega3.request.RequestHandlerFactory .getRequestHandler(request);
+			String context = request.getContextPath() + "/";
+			
+			context += curam.omega3.user.UserPreferencesFactory.getUserPreferences(pageContext.getSession()).getLocale() + "/";
+			String activityID = request.getParameter("ID");
+			String eventType = request.getParameter("TYPE");
+			String url = context;
+			curam.interfaces.ActivityPkg.Activity_readDescription_TH th = new curam.interfaces.ActivityPkg.Activity_readDescription_TH();
+			
+			th.setFieldValue(th.key$activityDescriptionKey$activityID_idx, activityID);
+			th.callServer();
+			String description = th.getFieldValue(th.result$activityDescriptionDetails$description_idx);
+			
+			if (eventType.equals("AT1")) {
+				url = "Activity_viewUserRecurringActivityPage.do?";
+			} else {
+				url = "Activity_viewUserStandardActivityPage.do?";
+			}
+			
+			url += "activityID=" + activityID;
+			url += "&description=" + curam.omega3.request.RequestUtils.escapeURL(description);
+			url += "&" + rh.getSystemParameters();
+			response.sendRedirect(response.encodeRedirectURL(url));
+		]]>
+	</JSP_SCRIPTLET>
+</PAGE>
